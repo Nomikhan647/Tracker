@@ -2,35 +2,93 @@
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
+    Layout = null;
 }
-
-<h1>@ViewData["Title"]</h1>
-
-<div class="row">
-    <div class="col-md-4">
-        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                <label asp-for="Input.Email">Email</label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.Password">Password</label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-        </form>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Register - Kaiadmin Bootstrap 5 Admin Dashboard</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport">
     
+    <!-- Fonts and icons -->
+    <script src="~/js/plugin/webfont/webfont.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Public+Sans:300,400,500,600,700" media="all">
+    <link rel="stylesheet" href="~/css/fonts.min.css" media="all">
+    <script>
+        WebFont.load({
+            google: { "families": ["Public Sans:300,400,500,600,700"] },
+            custom: { "families": ["Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['assets/css/fonts.min.css'] },
+            active: function () {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/plugins.min.css">
+    <link rel="stylesheet" href="~/css/kaiadmin.min.css">
+</head>
+
+<body class="login bg-primary" data-new-gr-c-s-check-loaded="14.1201.0" data-gr-ext-installed="" cz-shortcut-listen="true">
+
+<div class="wrapper wrapper-login">
+    <div class="container container-signup animated fadeIn" style="display: block;">
+        <h3 class="text-center">Sign Up</h3>
+        <div class="login-form">
+            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                <div class="form-sub">
+                    <div class="form-floating form-floating-custom mb-3">
+                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                        <label asp-for="Input.Email">Email</label>
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-floating form-floating-custom mb-3">
+                        <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                        <label asp-for="Input.Password">Password</label>
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        <div class="show-password">
+                            <i class="icon-eye"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="form-floating form-floating-custom mb-3">
+                        <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="confirm password" />
+                        <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                        <div class="show-password">
+                            <i class="icon-eye"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-sub m-0">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="agree" />
+                        <label class="form-check-label" for="agree">I Agree the terms and conditions</label>
+                    </div>
+                </div>
+
+                <div class="form-action">
+                    <button id="registerSubmit" type="submit" class="btn btn-primary w-100 btn-login">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+
+<script src="~/js/core/jquery-3.7.1.min.js"></script>
+<script src="~/js/core/popper.min.js"></script>
+<script src="~/js/core/bootstrap.min.js"></script>
+<script src="~/js/kaiadmin.min.js"></script>
+
+</body>
+
+</html>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
